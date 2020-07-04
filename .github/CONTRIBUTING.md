@@ -12,4 +12,3 @@ For contribute at this project, open an Issue or a Pull request.
 ### Util links
 
 * [How to work with branches](https://www.robinwieruch.de/git-team-workflow)
-* [How to programming asynchronously](https://medium.com/@pekelny/fake-event-loop-python3-7498761af5e0)
