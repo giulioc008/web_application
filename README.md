@@ -1,6 +1,6 @@
 # web_application template
 
-My **Web Application**
+**Python template** for building a **Web Application**
 
 
 
