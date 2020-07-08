@@ -71,7 +71,7 @@ To install the dependencies, create a [Virtual Enviroment](https://packaging.pyt
 
 ## How to run the application
 
-To run the application, use: `uvicorn main:app --reload`
+To run the application, use: `uvicorn app:app --reload`
 
 
 ## Check the application
