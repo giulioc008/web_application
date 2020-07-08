@@ -8,7 +8,7 @@ After=network.target
 Description=Service that run the script that manage a Web Application
 
 [Service]
-ExecStart=source venv/bin/activate; uvicorn app:app --reload; deactivate
+ExecStart=source venv/bin/activate; flask run --host=0.0.0.0; deactivate
 Restart=on-failure
 RestartSec=5s
 Type=simple

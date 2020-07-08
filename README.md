@@ -6,20 +6,6 @@
 
 ## Modules
 
-### FastAPI
-
-Web framework for building APIs with Python 3.6+ based on standard Python type hints
-
-
-* Version: 0.54.1
-* Website: https://fastapi.tiangolo.com/
-* Documentation: https://fastapi.tiangolo.com/tutorial/
-* Module name: **fastapi**
-* Requirements: **uvicorn**
-* Installing: `pip install --upgrade --no-cache-dir fastapi; pip install --upgrade --no-cache-dir uvicorn`
-
-
-
 ### Flask
 
 Lightweight WSGI web application framework
@@ -71,12 +57,4 @@ To install the dependencies, create a [Virtual Enviroment](https://packaging.pyt
 
 ## How to run the application
 
-To run the application, use: `uvicorn app:app --reload`
-
-
-## Check the application
-
-Your application run at http://localhost:8000/ and have two type of documentation:
-
-* Interactive Docs: it is provided by [Swagger UI](https://github.com/swagger-api/swagger-ui) at http://localhost:8000/docs
-* Alternative Docs: it is provided by [ReDoc](https://github.com/Rebilly/ReDoc) at http://localhost:8000/redoc
+To run the application, use: `flask run --host=0.0.0.0`
