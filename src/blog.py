@@ -1,6 +1,7 @@
 import flask
 from flask import Blueprint
 from src.auth import login_required
+from src.database import get_database
 
 blueprint = Blueprint("blog", __name__)
 
@@ -18,7 +19,7 @@ def create():
 		if error is not None:
 			flask.flash(error)
 		else:
-			database = src.database.get_database()
+			database = get_database()
 
 			with database.cursor() as cursor:
 				cursor.execute("INSERT INTO `post` (`title`, `body`, `author_id`) VALUES (%(title)s, %(body)s, %(user_id)s);", {
@@ -37,7 +38,7 @@ def create():
 @login_required
 def delete(id):
 	get_post(id)
-	database = src.database.get_database()
+	database = get_database()
 
 	with database.cursor() as cursor:
 		cursor.execute("DELETE FROM `post` WHERE `id`=%(id)s;", {
@@ -49,7 +50,7 @@ def delete(id):
 
 
 def get_post(id, check_author = True):
-	database = src.database.get_database()
+	database = get_database()
 
 	with database.cursor() as cursor:
 		cursor.execute("SELECT `post.id`, `title`, `body`, `created`, `author_id`, `username` FROM `post`, `user` WHERE `post.author_id`=`user.id` AND `post.id`=%(id)s;", {
@@ -68,7 +69,7 @@ def get_post(id, check_author = True):
 
 @blueprint.route("/")
 def index():
-	database = src.database.get_database()
+	database = get_database()
 
 	with database.cursor() as cursor:
 		cursor.execute("SELECT `post.id`, `title`, `body`, `created`, `author_id`, `username` FROM `post`, `user` WHERE `post.author_id`=`user.id` ORDER BY `created` DESC;")
@@ -93,7 +94,7 @@ def update(id):
 		if error is not None:
 			flask.flash(error)
 		else:
-			database = src.database.get_database()
+			database = get_database()
 
 			with database.cursor() as cursor:
 				cursor.execute("UPDATE `post` SET `title`=%(title)s, `body`=%(body)s WHERE `id`=%(id)s;", {

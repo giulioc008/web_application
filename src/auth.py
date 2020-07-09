@@ -1,6 +1,7 @@
 import functools
 import flask
 from flask import Blueprint
+from src.database import get_database
 
 blueprint = Blueprint("auth", __name__, url_prefix="/auth")
 
@@ -12,7 +13,7 @@ def load_logged_in_user():
 	if user_id is None:
 		flask.g.user = None
 	else:
-		database = src.database.get_database()
+		database = get_database()
 
 		with database.cursor() as cursor:
 			cursor.execute("SELECT * FROM `user` WHERE `id`=%(user_id)s;", {
@@ -26,7 +27,7 @@ def login():
 	if flask.request.method == "POST":
 		username = flask.request.form["username"]
 		password = flask.request.form["password"]
-		database = src.database.get_database()
+		database = get_database()
 		error = None
 
 		with database.cursor() as cursor:
@@ -54,7 +55,7 @@ def login_required(view):
 	@functools.wraps(view)
 	def wrapped_view(**kwargs):
 		if flask.g.user is None:
-			return flask.redirect(flask.url_for('auth.login'))
+			return flask.redirect(flask.url_for("auth.login"))
 
 		return view(**kwargs)
 
@@ -72,7 +73,7 @@ def register():
 	if flask.request.method == "POST":
 		username = flask.request.form["username"]
 		password = flask.request.form["password"]
-		database = src.database.get_database()
+		database = get_database()
 		error = None
 
 		with database.cursor() as cursor:

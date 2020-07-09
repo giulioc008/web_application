@@ -1,6 +1,7 @@
 import click
 import flask
 from flask import Flask
+from flask.cli import with_appcontext
 import pymysql
 
 
@@ -39,7 +40,7 @@ def init_database():
 
 
 @click.command("init-database")
-@flask.cli.with_appcontext
+@with_appcontext
 def init_database_command():
 	init_database()
 	click.echo("Initialized the database.")
