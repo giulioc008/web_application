@@ -5,7 +5,7 @@ from flask.cli import with_appcontext
 import pymysql
 
 
-def close_database():
+def close_database(_):
 	database = flask.g.pop("database", None)
 
 	if database is not None:

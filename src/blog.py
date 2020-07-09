@@ -36,7 +36,7 @@ def create():
 
 @blueprint.route("/<int:id>/delete", methods=["POST"])
 @login_required
-def delete(id):
+def delete(id: int):
 	get_post(id)
 	database = get_database()
 
@@ -49,7 +49,7 @@ def delete(id):
 	return flask.redirect(flask.url_for("blog.index"))
 
 
-def get_post(id, check_author = True):
+def get_post(id: int, check_author: bool = True):
 	database = get_database()
 
 	with database.cursor() as cursor:
@@ -80,7 +80,7 @@ def index():
 
 @blueprint.route("/<int:id>/update", methods=["GET", "POST"])
 @login_required
-def update(id):
+def update(id: int):
 	post = get_post(id)
 
 	if flask.request.method == "POST":
