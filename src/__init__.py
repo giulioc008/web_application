@@ -8,8 +8,8 @@ import os
 
 def create_app(test_config = None):
 	app = Flask(__name__, template_folder="templates", static_folder="static")
-	app.config.from_mapping(SECRET_KEY=b"\xa3h]\xd5\xc71W\xee\xe0\xd3\xcc4Y\x11 \x7f", DATABASE=os.path.join(app.instance_path, "src.pymysql"), DEBUG=True)
-	app.env = "development"
+	app.config.from_mapping(SECRET_KEY=b"\xa3h]\xd5\xc71W\xee\xe0\xd3\xcc4Y\x11 \x7f",
+		DATABASE=os.path.join(app.instance_path, "src.pymysql"))
 	app.jinja_env = Environment(trim_blocks=True, lstrip_blocks=True, extensions=[
 		"jinja2.ext.do",
 		"jinja2.ext.loopcontrols"
