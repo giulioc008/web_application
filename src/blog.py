@@ -1,10 +1,11 @@
 import flask
 from flask import Blueprint
+from src.auth import login_required
 
 blueprint = Blueprint("blog", __name__)
 
 @blueprint.route("/create", methods=["GET", "POST"])
-@src.auth.login_required
+@login_required
 def create():
 	if flask.request.method == "POST":
 		title = flask.request.form["title"]
@@ -33,7 +34,7 @@ def create():
 
 
 @blueprint.route("/<int:id>/delete", methods=["POST"])
-@src.auth.login_required
+@login_required
 def delete(id):
 	get_post(id)
 	database = src.database.get_database()
@@ -77,7 +78,7 @@ def index():
 
 
 @blueprint.route("/<int:id>/update", methods=["GET", "POST"])
-@src.auth.login_required
+@login_required
 def update(id):
 	post = get_post(id)
 

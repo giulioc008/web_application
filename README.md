@@ -6,6 +6,17 @@
 
 ## Modules
 
+### Coverage
+
+Tool for measuring code coverage of Python programs
+
+* Version: 5.2
+* Website: https://coverage.readthedocs.io/en/coverage-5.2/#
+* Documentation: https://coverage.readthedocs.io/en/coverage-5.2/config.html
+* Installing: `pip install --upgrade --no-cache-dir coverage`
+
+
+
 ### Flask
 
 Lightweight WSGI web application framework
@@ -37,6 +48,20 @@ Module used to connect to a MySQL Server
 
 
 
+### pytest
+
+Framework that makes building simple and scalable tests easy
+
+* Version: 5.4.3
+* Website: https://docs.pytest.org/en/stable/contents.html
+* Documentation:
+	- https://docs.pytest.org/en/stable/getting-started.html#create-your-first-test
+	- https://docs.pytest.org/en/stable/reference.html
+* Module name: **pytest**
+* Installing: `pip install --upgrade --no-cache-dir pytest`
+
+
+
 ### Requests
 
 HTTP library for Python, built for human beings
@@ -58,3 +83,9 @@ To install the dependencies, create a [Virtual Enviroment](https://packaging.pyt
 ## How to run the application
 
 To run the application, use: `flask run --host=0.0.0.0`
+
+
+
+## How to test the application
+
+To test the application, use: `pytest; coverage run -m pytest`
