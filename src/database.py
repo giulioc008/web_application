@@ -36,7 +36,15 @@ def init_database():
 	database = get_database()
 
 	with flask.current_app.open_resource("web_application.sql") as f:
-		database.executescript(f.read().decode("utf8"))
+		script = f.read().decode("utf8")
+		script = script.replace("\n", " ")
+		script = script.replace("; ", "\n")
+		script = script.splitlines()
+
+		with database.cursor() as cursor:
+			for i in script:
+				cursor.execute(i)
+		database.commit()
 
 
 @click.command("init-database")
