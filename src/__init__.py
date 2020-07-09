@@ -11,7 +11,7 @@ def create_app(test_config = None):
 	app.config.from_mapping(SECRET_KEY=b"\xa3h]\xd5\xc71W\xee\xe0\xd3\xcc4Y\x11 \x7f", DATABASE=os.path.join(app.instance_path, "src.pymysql"), DEBUG=True)
 	app.env = "development"
 	app.jinja_env = Environment(trim_blocks=True, lstrip_blocks=True, extensions=[
-		"jinja2.ext.do"
+		"jinja2.ext.do",
 		"jinja2.ext.loopcontrols"
 	])
 	flask.logging.default_handler.setFormatter(Formatter(fmt="At %(asctime)s was logged the event:\t%(levelname)s - %(message)s", datefmt="%d/%m/%Y %H:%M:%S"))

@@ -27,8 +27,8 @@ def get_database():
 
 
 def init_app(app: Flask):
-	app.teardown_appcontext(close_db)
-	app.cli.add_command(init_db_command)
+	app.teardown_appcontext(close_database)
+	app.cli.add_command(init_database_command)
 
 
 def init_database():
