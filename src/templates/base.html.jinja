@@ -1,26 +1,43 @@
-<!doctype html>
-<title>
-	{% block title %}{% endblock %}
-</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-<nav>
-	<h1>Src</h1>
-	<ul>
-		{% if g.user %}
-			<li><span>{{ g.user['username'] }}</span>
-			<li><a href="{{ url_for('auth.logout') }}">Log Out</a>
-		{% else %}
-			<li><a href="{{ url_for('auth.register') }}">Register</a>
-			<li><a href="{{ url_for('auth.login') }}">Log In</a>
-		{% endif %}
-	</ul>
-</nav>
-<section class="content">
-	<header>
-		{% block header %}{% endblock %}
-	</header>
-	{% for message in get_flashed_messages() %}
-		<div class="flash">{{ message }}</div>
-	{% endfor %}
-	{% block content %}{% endblock %}
-</section>
+<!DOCTYPE html>
+<html lang="en">
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+	<head>
+		<link rel="shortcut icon" type="image/x-icon" href="../media/logo.png"/>
+		{% block head %}{% endblock head %}
+		<title>
+			{% block title %}{% endblock %}
+		</title>
+	</head>
+	<body>
+		<nav>
+			<h1>Src</h1>
+			<ul>
+				{% if g.user %}
+					<li><span>{{ g.user['username'] }}</span>
+					<li><a href="{{ url_for('auth.logout') }}">Log Out</a>
+				{% else %}
+					<li><a href="{{ url_for('auth.register') }}">Register</a>
+					<li><a href="{{ url_for('auth.login') }}">Log In</a>
+				{% endif %}
+			</ul>
+		</nav>
+		<section class="content">
+			<header>
+				{% block header %}{% endblock %}
+			</header>
+			{% for message in get_flashed_messages() %}
+				<div class="flash">{{ message }}</div>
+			{% endfor %}
+			{% block content %}{% endblock %}
+			<!-- Footer content -->
+			<footer>
+				<div>
+					{% block footer %}
+						&copy; Copyright by <a href="https://t.me/giulioCoaInCamelCase">Giulio Coa</a>.
+					{% endblock footer %}
+				</div>
+			</footer>
+		</section>
+	</body>
+</html>
