@@ -48,7 +48,7 @@ def login():
 
 		flask.flash(error)
 
-	return flask.render_template("auth/login.html.jinja")
+	return flask.render_template("auth/login.html")
 
 
 def login_required(view):
@@ -100,4 +100,4 @@ def register():
 
 		flask.flash(error)
 
-	return flask.render_template("auth/register.html.jinja")
+	return flask.render_template("auth/register.html")

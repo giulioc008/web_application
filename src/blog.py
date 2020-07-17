@@ -31,7 +31,7 @@ def create():
 
 			return flask.redirect(flask.url_for("blog.index"))
 
-	return flask.render_template("blog/create.html.jinja")
+	return flask.render_template("blog/create.html")
 
 
 @blueprint.route("/<int:id>/delete", methods=["POST"])
@@ -75,7 +75,7 @@ def index():
 		cursor.execute("SELECT `post.id`, `title`, `body`, `created`, `author_id`, `username` FROM `post`, `user` WHERE `post.author_id`=`user.id` ORDER BY `created` DESC;")
 		posts = cursor.fetchall()
 
-	return flask.render_template("blog/index.html.jinja", posts=posts)
+	return flask.render_template("blog/index.html", posts=posts)
 
 
 @blueprint.route("/<int:id>/update", methods=["GET", "POST"])
@@ -106,4 +106,4 @@ def update(id: int):
 
 			return flask.redirect(flask.url_for("blog.index"))
 
-	return flask.render_template("blog/update.html.jinja", post=post)
+	return flask.render_template("blog/update.html", post=post)
