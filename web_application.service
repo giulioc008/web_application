@@ -2,8 +2,6 @@
 AssertPathExists=path_to_the_application
 AssertPathIsDirectory=path_to_the_application
 AssertDirectoryNotEmpty=path_to_the_application
-AssertPathExists=path_to_the_application/app.py
-AssertFileNotEmpty=path_to_the_application/app.py
 After=network.target
 Description=Service that run the script that manage a Web Application
 
@@ -16,5 +14,4 @@ User=my_user
 WorkingDirectory=path_to_the_application
 
 [Install]
-Alias=web_application.service
 WantedBy=multi-user.target
